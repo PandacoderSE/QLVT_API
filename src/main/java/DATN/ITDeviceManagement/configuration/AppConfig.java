@@ -39,7 +39,7 @@ public class AppConfig {
         config.addAllowedOrigin("http://10.128.58.5:5173");
         config.addAllowedOrigin("http://10.128.58.6:5173");
         config.addAllowedOrigin("http://10.128.58.12:5173");
-        config.addAllowedOrigin("https://qlvt-ui-production.up.railway.app");
+        config.addAllowedOrigin("https://qlvtui-production.up.railway.app");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
