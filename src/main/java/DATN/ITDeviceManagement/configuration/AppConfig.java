@@ -29,12 +29,17 @@ public class AppConfig {
     @Autowired
     private ResourceLoader resourceLoader;
 
-    @Bean
+   @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("https://qlvtui-production.up.railway.app");
+        config.addAllowedOrigin("http://localhost:5173"); // Giữ nếu cần test local
+        config.addAllowedOrigin("http://10.128.58.11:5173");
+        config.addAllowedOrigin("http://10.128.58.5:5173");
+        config.addAllowedOrigin("http://10.128.58.6:5173");
+        config.addAllowedOrigin("http://10.128.58.12:5173");
+        config.addAllowedOrigin("https://qlvtui-production.up.railway.app"); // Sửa domain cho đúng
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
@@ -42,7 +47,6 @@ public class AppConfig {
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
     }
-
     @PostConstruct
     public void init() {
         try {
