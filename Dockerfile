@@ -25,4 +25,4 @@ RUN ./gradlew clean build -x check -x test
 EXPOSE 8080
 
 # Chạy ứng dụng
-CMD ["java", "-jar", "build/libs/usol.group-4-0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "build/libs/usol.group-4-0.0.1-SNAPSHOT.jar"]
