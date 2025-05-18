@@ -12,14 +12,14 @@ COPY build.gradle settings.gradle ./
 # Cấp quyền thực thi cho gradlew
 RUN chmod +x gradlew
 
-# Tải dependency trước để tận dụng cache với id cụ thể
-RUN --mount=type=cache,id=gradle-cache,target=/root/.gradle ./gradlew dependencies
+# Tải dependency trước để tận dụng cache với id có tiền tố
+RUN --mount=type=cache,id=s/gradle-cache,target=/root/.gradle ./gradlew dependencies
 
 # Sao chép mã nguồn
 COPY src src
 
 # Chạy build, bỏ qua check và test với cùng id cache
-RUN --mount=type=cache,id=gradle-cache,target=/root/.gradle ./gradlew clean build -x check -x test
+RUN --mount=type=cache,id=s/gradle-cache,target=/root/.gradle ./gradlew clean build -x check -x test
 
 # Expose cổng (mặc định Spring Boot)
 EXPOSE 8080
