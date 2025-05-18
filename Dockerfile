@@ -11,13 +11,13 @@ COPY . .
 RUN chmod +x gradlew
 
 # Tải dependency
-RUN ./gradlew dependencies
+RUN ./gradlew dependencies || { echo "Dependencies failed"; exit 1; }
 
-# Chạy build, bỏ qua check và test
-RUN ./gradlew clean build -x check -x test
+# Chạy build và ghi log
+RUN ./gradlew clean build -x check -x test --stacktrace > gradle.log 2>&1 || { echo "Build failed"; cat gradle.log; exit 1; }
 
-# Kiểm tra file JAR tồn tại
-RUN ls -l build/libs/ || exit 1
+# Kiểm tra file JAR tồn tại và ghi kết quả
+RUN ls -l build/libs/ || { echo "JAR file not found"; cat gradle.log; exit 1; }
 
 # Expose cổng (mặc định Spring Boot)
 EXPOSE 8080
