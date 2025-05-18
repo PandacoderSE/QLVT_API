@@ -34,11 +34,6 @@ public class AppConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:5173");
-        config.addAllowedOrigin("http://10.128.58.11:5173");
-        config.addAllowedOrigin("http://10.128.58.5:5173");
-        config.addAllowedOrigin("http://10.128.58.6:5173");
-        config.addAllowedOrigin("http://10.128.58.12:5173");
         config.addAllowedOrigin("https://qlvtui-production.up.railway.app");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
