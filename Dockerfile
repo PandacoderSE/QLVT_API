@@ -20,4 +20,4 @@ RUN ls -l build/libs/
 EXPOSE 8080
 
 # Chạy ứng dụng với file JAR vừa build được (dùng wildcard cho an toàn)
-CMD java -jar build/libs/*.jar
+CMD java -Xmx256m -Xms128m -jar build/libs/*.jar
