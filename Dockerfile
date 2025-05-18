@@ -4,22 +4,20 @@ FROM openjdk:11-jdk-slim
 # Đặt thư mục làm việc
 WORKDIR /app
 
-# Sao chép file Gradle và cấu hình
-COPY gradlew .
-COPY gradle gradle
-COPY build.gradle settings.gradle ./
+# Sao chép toàn bộ dự án
+COPY . .
 
 # Cấp quyền thực thi cho gradlew
 RUN chmod +x gradlew
 
-# Tải dependency mà không dùng cache mount
+# Tải dependency
 RUN ./gradlew dependencies
-
-# Sao chép mã nguồn
-COPY src src
 
 # Chạy build, bỏ qua check và test
 RUN ./gradlew clean build -x check -x test
+
+# Kiểm tra file JAR tồn tại
+RUN ls -l build/libs/ || exit 1
 
 # Expose cổng (mặc định Spring Boot)
 EXPOSE 8080
