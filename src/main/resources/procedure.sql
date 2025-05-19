@@ -1,4 +1,4 @@
-PROCEDURE `list_device`(
+CREATE PROCEDURE `list_device`(
     IN queryType VARCHAR(20),
     IN page INT,
     IN pageSize INT,
