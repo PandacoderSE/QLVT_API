@@ -29,7 +29,7 @@ BEGIN
         SET pageSize = 10;
     END IF;
 
-    SET @query = CONCAT(selectQuery, 'FROM Device WHERE 1=1 ');
+    SET @query = CONCAT(selectQuery, 'FROM device WHERE 1=1 ');
 
     IF accountingCode IS NOT NULL AND accountingCode != '' THEN
         SET @query = CONCAT(@query, ' AND accounting_code LIKE "%', accountingCode, '%" ');
