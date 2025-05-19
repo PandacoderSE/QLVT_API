@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `list_device`(
+PROCEDURE `list_device`(
     IN queryType VARCHAR(20),
     IN page INT,
     IN pageSize INT,
